@@ -128,6 +128,20 @@ module.exports = function(grunt) {
           src: ['dist/jsoneditor.js']
         }
       }
+    },
+    connect: {
+        server:{
+            options: {
+                port: 9001,
+                keepalive: true,
+                base: {
+                    path: '.',
+                    options: {
+                      index: 'HadoopCluster.html'
+                    }
+                  }
+                }
+            }
     }
   });
 
@@ -136,6 +150,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-concat-sourcemap');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Default task.
   grunt.registerTask('default', ['jshint:beforeconcat','concat_sourcemap','jshint:afterconcat','uglify']);
